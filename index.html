@@ -3,29 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CICD with Docker Demo</title>
+    <title>CICD Deployment -01</title>
     <style>
-        .hanging-indent {
-            text-indent: -1.5em; /* negative indent for the first line */
-            margin-left: 1.5em; /* margin to push the rest of the lines */
+        .container {
+            position: relative;
+            max-width: 400px;
+            margin: 20px;
         }
-
-        ul {
-            list-style-type: none; /* remove default list style */
-            padding: 0; /* remove default padding */
+        #myText {
+            width: 100%;
+            height: 100px;
+            margin-top: 40px; /* Space for the button */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-
-        li {
-            class: hanging-indent; /* apply hanging indent to list items */
-            margin-bottom: 0.5em; /* add some space between items */
+        #copyButton {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #copyButton:hover {
+            background-color: #45a049; /* Darker green */
+        }
+        p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <ul>
-        <li>This is the first item of the list that is formatted with a hanging indent.</li>
-        <li>This is the second item of the list with the same style applied.</li>
-        <li>And here is the third item in the list.</li>
-    </ul>
+    <div class="container">
+        <p>This is some text next to the input:</p>
+        <button id="copyButton" onclick="copyText()">Copy Text</button>
+        <textarea id="myText" readonly>This text cannot be edited.</textarea>
+    </div>
+
+    <script>
+        function copyText() {
+            const textArea = document.getElementById("myText");
+            textArea.select();
+            document.execCommand("copy");
+            alert("Text copied: " + textArea.value);
+        }
+    </script>
 </body>
 </html>
